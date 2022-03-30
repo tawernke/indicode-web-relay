@@ -1,0 +1,8 @@
+query publicProducts($limit: Int!, $cursor: String) {
+  products(isPublic: true, limit: $limit, cursor: $cursor) {
+    hasMore
+    publicProducts {
+      ...StandardProduct
+    }
+  }
+}

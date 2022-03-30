@@ -1,0 +1,13 @@
+query Orders {
+  shippedOrders: orders(isShipped: true) {
+    shippedOrders {
+      ...StandardOrder
+    }
+  }
+
+  unShippedOrders: orders(isShipped: false) {
+    unShippedOrders {
+      ...StandardOrder
+    }
+  }
+}
