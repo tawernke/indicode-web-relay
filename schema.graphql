@@ -1,0 +1,142 @@
+"""Exposes a URL that specifies the behaviour of this scalar."""
+directive @specifiedBy(
+  """The URL that specifies the behaviour of this scalar."""
+  url: String!
+) on SCALAR
+
+input AddOrderInput {
+  orderItems: [OrderItemInput!]!
+  email: String!
+  firstName: String!
+  lastName: String!
+  address: String!
+  address2: String
+  city: String!
+  country: String!
+  zip: String!
+  total: Float!
+  totalQuantity: Float!
+}
+
+type AllOrders {
+  shippedOrders: [Order!]!
+  unShippedOrders: [Order!]!
+}
+
+type FieldError {
+  field: String!
+  message: String!
+}
+
+type Mutation {
+  createOrder(orderInput: AddOrderInput!): Order!
+  updateOrder(input: UpdateOrderInput!, id: Int!): Order
+  createProduct(input: ProductInput!): Product!
+  updateProduct(input: ProductInput!, uuid: String!): Product
+  register(options: UsernamePasswordInput!): UserResponse!
+  login(password: String!, usernameOrEmail: String!): UserResponse!
+  logout: Boolean!
+  forgotPassword(email: String!): Boolean!
+  changePassword(newPassword: String!, token: String!): UserResponse!
+}
+
+type Order {
+  id: Float!
+  firstName: String!
+  lastName: String!
+  email: String!
+  address: String!
+  address2: String!
+  city: String!
+  country: String!
+  stateOrProvince: String!
+  zip: String!
+  total: Float!
+  totalQuantity: Float!
+  orderItems: [OrderItem!]!
+  shipped: Boolean!
+  createdAt: String!
+}
+
+type OrderItem {
+  id: Float!
+  productName: String!
+  imageUrl: String!
+  quantity: Float!
+  price: Float!
+  total: Float!
+  productId: Float!
+  orderId: Float!
+  createdAt: String!
+}
+
+input OrderItemInput {
+  productName: String!
+  productId: Float!
+  quantity: Float!
+  imageUrl: String!
+  price: Float!
+  total: Float!
+}
+
+type PaginatedProducts {
+  publicProducts: [Product!]!
+  privateProducts: [Product!]!
+  hasMore: Boolean!
+}
+
+type Product {
+  id: Float!
+  uuid: String!
+  name: String!
+  price: Float!
+  imageUrl: String!
+  isSold: Boolean!
+  isPublic: Boolean!
+  quantity: Float!
+  ownerId: Float!
+  deleted: Boolean!
+  createdAt: String!
+  updatedAt: String!
+}
+
+input ProductInput {
+  name: String!
+  price: Float!
+  quantity: Float!
+  imageUrl: String
+  isPublic: Boolean!
+  deleted: Boolean
+}
+
+type Query {
+  orders(isShipped: Boolean!): AllOrders!
+  order(id: String!): Order
+  products(cursor: String, limit: Int!, isPublic: Boolean!): PaginatedProducts!
+  product(uuid: String!): Product
+  me: User
+}
+
+input UpdateOrderInput {
+  shipped: Boolean!
+}
+
+type User {
+  id: Float!
+  username: String!
+  email: String!
+  createdAt: String!
+  updatedAt: String!
+}
+
+input UsernamePasswordInput {
+  username: String!
+  email: String!
+  password: String!
+}
+
+type UserResponse {
+  errors: [FieldError!]
+  user: User
+}
+
