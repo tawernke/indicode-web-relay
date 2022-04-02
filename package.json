@@ -6,10 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "gen": "graphql-codegen --config codegen.yml"
+    "gen": "get-graphql-schema http://localhost:4000/graphql > schema.graphql"
   },
   "dependencies": {
-    "@apollo/client": "^3.2.2",
     "@chakra-ui/react": "^1.0.0",
     "@emotion/react": "^11.0.0",
     "@emotion/styled": "^11.0.0",
@@ -22,7 +21,6 @@
     "isomorphic-unfetch": "^3.0.0",
     "moment": "^2.29.1",
     "next": "12",
-    "next-apollo": "^5.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "^3.11.0",
@@ -32,17 +30,18 @@
     "yup": "^0.29.3"
   },
   "devDependencies": {
-    "@graphql-codegen/cli": "1.17.7",
-    "@graphql-codegen/typescript": "1.17.7",
-    "@graphql-codegen/typescript-operations": "1.17.7",
-    "@graphql-codegen/typescript-react-apollo": "^2.0.7",
     "@testing-library/react": "^12.1.4",
     "@types/jest": "^27.4.1",
     "@types/node": "^14.0.27",
     "@types/react-dom": "^17.0.9",
+    "@types/react-relay": "^13.0.2",
+    "@types/relay-runtime": "^13.0.3",
     "@types/yup": "^0.29.7",
     "babel-plugin-relay": "^13.2.0",
+    "get-graphql-schema": "^2.1.2",
     "relay-compiler": "^13.2.0",
+    "relay-compiler-language-typescript": "^15.0.1",
+    "relay-config": "^12.0.1",
     "typescript": "^4.1.0"
   }
 }
