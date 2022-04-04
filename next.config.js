@@ -2,8 +2,8 @@ module.exports = {
     compiler: {
       relay: {
         // This should match relay.config.js
-        src: './',
-        artifactDirectory: './__generated__',
+        src: './src',
+        artifactDirectory: './src/relay-types',
         language: 'typescript',
       },
     },
