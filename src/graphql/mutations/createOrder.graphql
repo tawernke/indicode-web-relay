@@ -1,8 +1,0 @@
-mutation CreateOrder(
-  $orderInput: AddOrderInput!
-) {
-  createOrder(orderInput: $orderInput) {
-    email
-    total
-  }
-}

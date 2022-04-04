@@ -1,5 +1,0 @@
-mutation UpdateProduct($uuid: String!, $input: ProductInput!) {
-  updateProduct(input: $input, uuid: $uuid) {
-    ...StandardProduct
-  }
-}

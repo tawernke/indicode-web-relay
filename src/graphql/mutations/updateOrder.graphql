@@ -1,5 +1,0 @@
-mutation UpdateOrder($id: Int!, $input: UpdateOrderInput!) {
-  updateOrder(input: $input, id: $id) {
-    ...StandardOrder
-  }
-}
